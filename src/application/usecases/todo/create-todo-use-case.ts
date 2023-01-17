@@ -6,9 +6,8 @@ import { UserNotFound } from '../user/errors/user-not-found';
 
 interface CreateTodoRequest {
   userId: string;
-  todo: {
-    title: string;
-  };
+
+  title: string;
 }
 interface CreateTodoResponse {
   todo: Todo;
@@ -22,13 +21,12 @@ export class CreateTodoUseCase {
   ) {}
 
   async execute(request: CreateTodoRequest): Promise<CreateTodoResponse> {
-    const { userId, todo } = request;
-    const { title } = todo;
+    const { userId, title } = request;
     const user = await this.userRepository.findById(userId);
 
     if (!user) throw new UserNotFound();
 
-    const newTodo = new Todo({ title, userId, user });
+    const newTodo = new Todo({ title, userId });
     await this.todoRepository.create(newTodo);
     return {
       todo: newTodo,

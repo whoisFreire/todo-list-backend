@@ -1,10 +1,8 @@
 import { randomUUID } from 'crypto';
 import { Replace } from 'src/helpers/replace';
-import { User } from './user';
 
 interface TodoProps {
   title: string;
-  user: User;
   userId: string;
   isDone?: Date;
   createdAt: Date;
@@ -34,14 +32,6 @@ export class Todo {
     this.props.title = value;
   }
 
-  public get user(): User {
-    return this.props.user;
-  }
-
-  public set user(value: User) {
-    this.props.user = value;
-  }
-
   public get userId(): string {
     return this.props.userId;
   }
@@ -56,5 +46,9 @@ export class Todo {
 
   public undone() {
     this.props.isDone = null;
+  }
+
+  public get createdAt(): Date {
+    return this.props.createdAt;
   }
 }

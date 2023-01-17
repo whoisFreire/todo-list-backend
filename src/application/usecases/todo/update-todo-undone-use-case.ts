@@ -1,3 +1,4 @@
+import { Injectable } from '@nestjs/common';
 import { Todo } from 'src/application/entities/todo';
 import { TodoRepository } from 'src/application/repositories/todo-repository';
 import { TodoNotFound } from './errors/todo-not-found';
@@ -10,6 +11,7 @@ interface UpdateTodoUndoneResponse {
   todo: Todo;
 }
 
+@Injectable()
 export class UpdateTodoUndoneUseCase {
   constructor(private readonly todoRepository: TodoRepository) {}
 

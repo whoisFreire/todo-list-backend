@@ -1,3 +1,4 @@
+import { Injectable } from '@nestjs/common';
 import { TodoRepository } from 'src/application/repositories/todo-repository';
 
 interface CountUserTodosRequest {
@@ -8,6 +9,7 @@ interface CountUserTodosResponse {
   count: number;
 }
 
+@Injectable()
 export class CountUserTodosUseCase {
   constructor(private readonly todoRepository: TodoRepository) {}
 

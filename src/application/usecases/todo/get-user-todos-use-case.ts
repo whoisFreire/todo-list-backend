@@ -1,3 +1,4 @@
+import { Injectable } from '@nestjs/common';
 import { Todo } from 'src/application/entities/todo';
 import { TodoRepository } from 'src/application/repositories/todo-repository';
 
@@ -9,6 +10,7 @@ interface GetUserTodosResponse {
   todos: Todo[];
 }
 
+@Injectable()
 export class GetUserTodosUseCase {
   constructor(private readonly todoRepository: TodoRepository) {}
 

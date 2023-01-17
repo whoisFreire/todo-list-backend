@@ -5,7 +5,6 @@ interface UserProps {
   name: string;
   email: string;
   password: string;
-  todos: Todo[];
   createdAt: Date;
   updatedAt?: Date;
 }
@@ -21,7 +20,6 @@ export class User {
     this._id = id ?? randomUUID();
     this.props = {
       ...props,
-      todos: props.todos ?? ([] as Todo[]),
       createdAt: props.createdAt ?? new Date(),
     };
   }
@@ -60,14 +58,6 @@ export class User {
     ) {
       this.props.password = value;
     }
-  }
-
-  public get todos(): Todo[] {
-    return this.props.todos;
-  }
-
-  public set todos(value: Todo[]) {
-    this.props.todos = value;
   }
 
   public get createdAt(): Date {

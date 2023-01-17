@@ -14,10 +14,14 @@ export class User {
   private _id: string;
   private props: UserProps;
 
-  constructor(props: Replace<UserProps, { createdAt?: Date }>, id?: string) {
+  constructor(
+    props: Replace<UserProps, { createdAt?: Date; todos?: Todo[] }>,
+    id?: string,
+  ) {
     this._id = id ?? randomUUID();
     this.props = {
       ...props,
+      todos: props.todos ?? ([] as Todo[]),
       createdAt: props.createdAt ?? new Date(),
     };
   }

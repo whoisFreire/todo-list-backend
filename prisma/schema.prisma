@@ -11,13 +11,13 @@ datasource db {
 }
 
 model User {
-  id        String   @id
+  id        String    @id
   name      String
-  email     String   @unique
+  email     String    @unique
   password  String
   Todos     Todo[]
   createdAt DateTime
-  updatedAt DateTime
+  updatedAt DateTime?
 }
 
 model Todo {
